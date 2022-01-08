@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # on first launch the sha file won't exist, so will (re)create a container regardless.
-# once the script has run once, sha file will be created and script will ignore
-# updates if the image exists on system. Personalize shafile variable/directory
+# once the script has run once, sha file will be created and script will ignore future
+# calls to update if the image already exists on system. Personalize shafile variable/directory
 # to meet your needs and docker storage volume location.
 
 shafile='/home/user/heimsha.txt'
