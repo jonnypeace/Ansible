@@ -28,7 +28,7 @@
       cache_valid_time: 86400
 
 # update docker images, scripts with docker run configs on ansible "host" server
-- hosts: dockerlxc
+- hosts: docker
   become: yes
   vars_files:
     - passwd.yml
