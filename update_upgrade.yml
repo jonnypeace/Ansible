@@ -1,13 +1,45 @@
 ---
+# equivalent to apt update && apt upgrade -y
+# become sudo
+# passwd.yml created using 'ansible-vault create passwd.yml'
+# add something like this
+#################################################################
+# ---
+# my_cluster_sudo_pass: super-strong-pass
+#################################################################
+# edit ansible.cfg and append variable...
+##################################################################
+# [homelab]
+# ANSIBLE_VAULT_PASSWORD_FILE=/home/user/ansible/passwd.yml
+##################################################################
+# create inventory for the hosts
+
 - hosts: homelab
   become: yes
   vars_files:
     - passwd.yml
   vars:
-    ansible_become_pass: "{{ my_cluser_sudo_pass }}"
+    ansible_become_pass: "{{ my_cluster_sudo_pass }}"
   tasks:
   - name: Update and upgrade apt packages
     apt:
       upgrade: yes
       update_cache: yes
       cache_valid_time: 86400
+
+# update docker images, scripts with docker run configs on ansible "host" server
+- hosts: dockerlxc
+  become: yes
+  vars_files:
+    - passwd.yml
+  vars:
+    ansible_become_pass: "{{ my_cluster_sudo_pass }}"
+  tasks:
+  - name: Update portainer
+    shell: ./portainer.sh # example script
+    args:
+      chdir: /home/user/scripts/
+  - name: Update heimdal
+    shell: ./heimdall.sh # example script
+    args:
+      chdir: /home/user/scripts/
