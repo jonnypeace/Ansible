@@ -40,10 +40,10 @@
     ansible_become_pass: "{{ my_cluster_sudo_pass }}"
   tasks:
   - name: Update portainer
-    shell: ./portainer.sh # example script
+    command: ./portainer.sh # example script
     args:
       chdir: /home/user/scripts/
   - name: Update heimdal
-    shell: ./heimdall.sh # example script
+    command: ./heimdall.sh # example script
     args:
       chdir: /home/user/scripts/
