@@ -13,7 +13,6 @@ newsha=$(docker pull ghcr.io/linuxserver/heimdall | grep sha256 | awk '{print $2
 if [[ $oldsha == $newsha ]]
 then
 	echo 'Image used is  already latest version'
-	exit 0
 else
 	echo $newsha > $shafile
 
