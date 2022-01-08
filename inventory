@@ -1,0 +1,18 @@
+## set up ssh user name and path to python3 ##
+[all:vars]
+ansible_user='james_bond'
+ansible_become=yes
+ansible_become_method=sudo
+ansible_become_pass='{{ my_cluster_sudo_pass }}'
+ansible_python_interpreter='/usr/bin/env python3'
+
+# examples below
+
+[homelab]
+192.168.29.29 ansible_connection=ssh ansible_user=james_bond
+192.168.29.30:50001 ansible_connection=ssh ansible_user=james_bond
+jamesbond.com:22 ansible_connection=ssh ansible_user=james_bond
+localhost ansible_connection=local
+
+[docker]
+192.168.29.99 ansible_connection=ssh ansible_user=james_bond
