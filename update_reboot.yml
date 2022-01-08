@@ -1,4 +1,5 @@
 ---
+# USE WITH CAUTION, REMEMBER YOUR SERVER MAY REBOOT
 - hosts: homelab
   become: yes
   vars_files:
