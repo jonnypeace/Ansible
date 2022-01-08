@@ -3,7 +3,7 @@
 # on first launch the sha file won't exist, so will recreate a container regardless.
 # once the script has run once, sha file will be created and script will ignore
 # updates if the image exists on system. Personalize shafile variable/directory
-# to meet your needs.
+# to meet your needs and docker storage volume location.
 
 shafile='/home/user/heimsha.txt'
 
@@ -33,7 +33,7 @@ else
 	  -e TZ=Europe/London \
 	  -p 80:80 \
 	  -p 443:443 \
-	  -v /home/jonny/Heimdall:/config \
+	  -v /home/user/Heimdall:/config \
 	  --restart unless-stopped \
 	  ghcr.io/linuxserver/heimdall
 
