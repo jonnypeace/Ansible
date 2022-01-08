@@ -17,16 +17,16 @@ then
 else
 	docker pull ghcr.io/linuxserver/heimdall | grep sha256 | awk '{print $2}' | awk -F ':' '{print $2}' > $shafile
 
-	answer=$(sudo docker ps -a | grep heimdall | awk '{print $1}')
+	answer=$(docker ps -a | grep heimdall | awk '{print $1}')
 	echo "Container $answer will be removed, and a new container will be created"
 
-	sudo docker stop $answer 
+	docker stop $answer 
 
-	sudo docker container rm $answer
+	docker container rm $answer
 
-	sudo docker pull ghcr.io/linuxserver/heimdall
+	docker pull ghcr.io/linuxserver/heimdall
 
-	sudo docker run -d \
+	docker run -d \
 	  --name=heimdall \
 	  -e PUID=1000 \
 	  -e PGID=1000 \
