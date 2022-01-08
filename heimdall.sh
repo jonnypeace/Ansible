@@ -15,7 +15,7 @@ then
 	echo 'Image used is  already latest version'
 	exit 0
 else
-	docker pull ghcr.io/linuxserver/heimdall | grep sha256 | awk '{print $2}' | awk -F ':' '{print $2}' > $shafile
+	echo $newsha > $shafile
 
 	answer=$(docker ps -a | grep heimdall | awk '{print $1}')
 	echo "Container $answer will be removed, and a new container will be created"
