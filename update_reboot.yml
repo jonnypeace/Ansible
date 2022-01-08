@@ -5,7 +5,7 @@
   vars_files:
     - passwd.yml
   vars:
-    ansible_become_pass: "{{ my_cluser_sudo_pass }}"
+    ansible_become_pass: "{{ my_cluster_sudo_pass }}"
   tasks:
   - name: Update and upgrade apt packages
     apt:
