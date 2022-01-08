@@ -27,7 +27,11 @@
       update_cache: yes
       cache_valid_time: 86400
 
-# update docker images, scripts with docker run configs on ansible "host" server
+# Update docker images using scripts with docker run configs on docker server.
+# Might update this so scripts are on ansible server. 
+# Some use cases might prefer untouched scripts located on docker server,
+# hence below. See example heimdal script in this repo.
+
 - hosts: docker
   become: yes
   vars_files:
