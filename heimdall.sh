@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# on first launch the sha file won't exist, so will recreate a container regardless.
+# on first launch the sha file won't exist, so will (re)create a container regardless.
 # once the script has run once, sha file will be created and script will ignore
 # updates if the image exists on system. Personalize shafile variable/directory
 # to meet your needs and docker storage volume location.
