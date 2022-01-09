@@ -32,6 +32,31 @@
 # Some use cases might prefer untouched scripts located on docker server,
 # hence below. See example heimdal script in this repo.
 
+- hosts: dockerlxc
+  become: yes
+  vars_files:
+    - passwd.yml
+  vars:
+    ansible_become_pass: "{{ my_cluster_sudo_pass }}"
+  tasks:
+  - name: Copy Heimdall Script to Server
+    copy:
+      src: /home/user/heimdall.sh
+      dest: /home/user/
+      force: no
+      owner: user
+      group: user
+      mode: u=rwx,g=r,o=r
+  tasks:
+  - name: Copy Portainer Script to Server
+    copy:
+      src: /home/user/portainer.sh
+      dest: /home/user/
+      force: no
+      owner: user
+      group: user
+      mode: u=rwx,g=r,o=r
+
 - hosts: docker
   become: yes
   vars_files:
