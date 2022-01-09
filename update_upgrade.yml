@@ -27,12 +27,13 @@
       update_cache: yes
       cache_valid_time: 86400
 
-# Update docker images using scripts with docker run configs on docker server.
-# Might update this so scripts are on ansible server. 
-# Some use cases might prefer untouched scripts located on docker server,
-# hence below. See example heimdal script in this repo.
+# The below will copy scripts from the users scripts directory, to the docker server
+# if the script doesn't exist, force=no.
+# This step could be ommited, I understand leaving untouched scripts on the server
+# could be disireable, but to update scripts use force=yes to overwrite the scripts on docker server.
+# See example heimdal script in this repo.
 
-- hosts: dockerlxc
+- hosts: docker
   become: yes
   vars_files:
     - passwd.yml
@@ -41,21 +42,22 @@
   tasks:
   - name: Copy Heimdall Script to Server
     copy:
-      src: /home/user/heimdall.sh
-      dest: /home/user/
+      src: /home/user/scripts/heimdall.sh
+      dest: /home/user/scripts/
       force: no
       owner: user
       group: user
       mode: u=rwx,g=r,o=r
-  tasks:
   - name: Copy Portainer Script to Server
     copy:
-      src: /home/user/portainer.sh
-      dest: /home/user/
+      src: /home/user/scripts/portainer.sh
+      dest: /home/user/scripts/
       force: no
       owner: user
       group: user
       mode: u=rwx,g=r,o=r
+
+# Update docker images using scripts with docker run configs on docker server.
 
 - hosts: docker
   become: yes
