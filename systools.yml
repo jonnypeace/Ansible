@@ -1,0 +1,40 @@
+---
+- hosts: homelab
+  become: yes
+  vars_files:
+    - passwd.yml
+  vars:
+    ansible_become_pass: "{{ my_cluster_sudo_pass }}"
+
+  pre_tasks:
+  - name: Update cache
+    apt:
+      update_cache: yes
+      cache_valid_time: 86400
+
+  tasks:
+  - name: Install sysstat
+    apt:
+      name: sysstat
+      state: present
+  - name: Install net-tools
+    apt:
+      name: net-tools
+      state: present
+  - name: Install iotop
+    apt:
+      name: iotop
+      state: present
+  - name: Install bonnie++
+    apt:
+      name: bonnie++
+      state: present
+
+  post_tasks:
+  - name: Remove useless packages from the cache
+    apt:
+      autoclean: yes
+
+  - name: Remove dependencies that are no longer required
+    apt:
+      autoremove: yes
