@@ -31,7 +31,7 @@
 # if the script doesn't exist, force=no.
 # This step could be ommited, I understand leaving untouched scripts on the server
 # could be disireable, but to update scripts use force=yes to overwrite the scripts on docker server.
-# See example heimdal script in this repo.
+# See example heimdal script in this repo..
 
 - hosts: docker
   become: yes
