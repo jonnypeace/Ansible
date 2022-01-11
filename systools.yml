@@ -10,8 +10,24 @@
   - name: Update cache
     apt:
       update_cache: yes
-      upgrade: yes
-      cache_valid_time: 86400
+e: speedtest-cli
+      state: present
+  - name: Install iperf3
+    apt:
+      name: iperf3
+      state: present
+  - name: Install sysstat
+    apt:
+      name: sysstat
+      state: present
+  - name: Install htop
+    apt:
+      name: htop
+      state: present
+  - name: Install smartmontools
+    apt:
+      name: smartmontools
+      state: pres      cache_valid_time: 86400
 
   tasks:
   - name: Install sysstat
