@@ -10,6 +10,7 @@
   - name: Update cache
     apt:
       update_cache: yes
+      upgrade: yes
       cache_valid_time: 86400
 
   tasks:
@@ -28,6 +29,26 @@
   - name: Install bonnie++
     apt:
       name: bonnie++
+      state: present
+  - name: Install speedtest
+    apt:
+      name: speedtest-cli
+      state: present
+  - name: Install iperf3
+    apt:
+      name: iperf3
+      state: present
+  - name: Install htop
+    apt:
+      name: htop
+      state: present
+  - name: Install smartmontools
+    apt:
+      name: smartmontools 
+      state: present
+  - name: Install neofetch 
+    apt:
+      name: neofetch
       state: present
 
   post_tasks:
