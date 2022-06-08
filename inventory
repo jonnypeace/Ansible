@@ -7,6 +7,7 @@ ansible_become_pass='{{ my_cluster_sudo_pass }}'
 ansible_python_interpreter='/usr/bin/env python3'
  
 [homelab]
+localhost ansible_connection=local
 example.com:port ansible_connection=ssh ansible_user=user
 192.168.29.29 ansible_connection=ssh ansible_user=user
 192.168.29.248:57421 ansible_connection=ssh ansible_user=user
