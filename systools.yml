@@ -15,39 +15,19 @@
   tasks:
   - name: Install sysstat
     apt:
-      name: sysstat
-      state: present
-  - name: Install net-tools
-    apt:
-      name: net-tools
-      state: present
-  - name: Install iotop
-    apt:
-      name: iotop
-      state: present
-  - name: Install bonnie++
-    apt:
-      name: bonnie++
-      state: present
-  - name: Install speedtest
-    apt:
-      name: speedtest-cli
-      state: present
-  - name: Install iperf3
-    apt:
-      name: iperf3
-      state: present
-  - name: Install htop
-    apt:
-      name: htop
-      state: present
-  - name: Install smartmontools
-    apt:
-      name: smartmontools 
-      state: present
-  - name: Install neofetch 
-    apt:
-      name: neofetch
+      name:
+        - sysstat
+        - net-tools
+        - iotop
+        - bonnie++
+        - speedtest-cli
+        - iperf3
+        - htop
+        - smartmontools
+        - neofetch
+        - sysbench
+        - p7zip-full
+        - iptraf-ng
       state: present
 
   post_tasks:
