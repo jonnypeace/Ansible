@@ -1,5 +1,5 @@
 ---
-# equivalent to apt update && apt upgrade -y
+# equivalent to apt update && apt dist-upgrade -y
 # become sudo
 # passwd.yml created using 'ansible-vault create passwd.yml'
 # add something like this
